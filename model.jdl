@@ -1,0 +1,54 @@
+// 参数含义请参考 https://www.jhipster.tech/jdl/applications
+
+application {
+    config {
+        applicationType monolith
+        authenticationType jwt
+        baseName jhi_starter
+        buildTool maven
+        cacheProvider ehcache
+        clientFramework vue
+        databaseType sql
+        devDatabaseType postgresql
+        languages [zh-cn]
+        packageName com.uvi.digital
+        prodDatabaseType postgresql
+        serverPort 9000
+        testFrameworks [cypress]
+    }
+    entities *
+}
+
+dto * with mapstruct   // 默认都用采用dto。 用了dto必然存在service。
+
+// 企业
+paginate Company with pagination
+entity Company {
+    name String
+    uscc String
+    principal String
+    phone String
+    settleTime Instant
+}
+
+
+// 证件类型
+enum IDType {
+    IDENTITY_CARD
+    PASSPORT
+}
+
+
+// 企业员工
+paginate Employee with pagination
+entity Employee {
+    name String
+    phone String
+    idType IDType
+    idNumber String
+}
+
+relationship ManyToOne {
+    Employee{company} to Company
+}
+

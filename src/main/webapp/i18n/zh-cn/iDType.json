@@ -1,0 +1,9 @@
+{
+  "jhiStarterApp": {
+    "IDType": {
+      "null": "",
+      "IDENTITY_CARD": "IDENTITY_CARD",
+      "PASSPORT": "PASSPORT"
+    }
+  }
+}
